@@ -1,0 +1,15 @@
+{
+    "name": "password-shroud.rene-so36",
+    "description": "keep your passwords opengpg encrypted on your phone",
+    "architecture": "armhf",
+    "title": "password-shroud",
+    "hooks": {
+        "password-shroud": {
+            "apparmor": "password-shroud.apparmor",
+            "desktop":  "password-shroud.desktop"
+        }
+    },
+    "version": "0.1",
+    "maintainer": "rene <rene@so36.net>",
+    "framework" : "ubuntu-sdk-15.04"
+}
