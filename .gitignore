@@ -9,7 +9,7 @@ pkg/
 # Gedit files
 
 *~
-
+*.swp
 # Copied host binary
 
 /ubuntu-go-qml-template
