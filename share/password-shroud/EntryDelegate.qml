@@ -12,16 +12,14 @@ ListItem {
       text:  "***********"
       
       Button {
-        color: UbuntuColors.orange
-        iconName: "find"
+        strokeColor: UbuntuColors.orange
         text: "show"
         onClicked: {
           dialog.text = ctrl.items.get(index).pass
         }
       }
       Button {
-        color: UbuntuColors.lightGrey
-        iconName: "edit-copy"
+        strokeColor: UbuntuColors.green
         text: "copy to clipboard"
         onClicked: {
           Clipboard.push( ctrl.items.get(index).pass )
@@ -29,7 +27,6 @@ ListItem {
       }
       Button {
         color: UbuntuColors.lightGrey
-        iconName: "undo"
         text: "cancel"
         onClicked: PopupUtils.close(dialog)
       }
@@ -43,19 +40,16 @@ ListItem {
   }
 
   Row {
-    spacing: units.gu(4)
+    //spacing: units.gu(4)
     Row {
       spacing: units.gu(2)
       Label {
         text: ctrl.items.get(index).name
         font.bold: true
+        color: UbuntuColors.purple
       }
       Label {
         text: ctrl.items.get(index).url
-      }
-      Label {
-        id: passLabel
-        text: "*" //ctrl.items.get(index).pass
       }
     }
   }
@@ -77,12 +71,8 @@ ListItem {
         id: editAction
         iconName: "edit"
         onTriggered: {
-          //editPage.ngLabel = "neue variante"
-          //editPage.passwdField.text = "geheim"
           addEntryPage.title = "Edit entry"
           myPages.push(addEntryPage)
-          //PopupUtils.open(dialogComp)
-          //console.log("show triggered for: " + index)
         }
       },
       **/
@@ -92,14 +82,12 @@ ListItem {
         description: "copies password to clipboard"
         iconName: "edit-copy"
         onTriggered: {
-          //console.log("copyClipboard triggered for " + ctrl.items.get(index).pass)
           Clipboard.push( ctrl.items.get(index).pass )
         }
       }
     ]
   }
   onClicked: {
-    console.log("entry clicked...")
     PopupUtils.open(dialogComp)
   }
 }

@@ -5,36 +5,29 @@ Page {
   id: introPage
   title: i18n.tr("Password-Shroud")
   visible: false
-
-  Button {
-    id: openButton
-    iconName: "lock-broken"
-    text: i18n.tr("Open stored passwords")
-    color: UbuntuColors.green
+  Image {
+    id: logo
+    source: "../images/key.png"
+    sourceSize.width: units.gu(30)
+    sourceSize.height: units.gu(50)
+    fillMode: Image.PreserveAspectFit
     anchors {
+      margins: units.gu(2)
       top: parent.top
       left: parent.left
       right: parent.right
+    }
+  }
+  Button {
+    id: openButton
+    text: i18n.tr("Open stored passwords")
+    strokeColor: UbuntuColors.orange
+    anchors {
+      centerIn: parent
       margins: units.gu(2)
     }
     onClicked: {
       myPages.push(editPage)
-    }
-  }
-  Button {
-    text: i18n.tr("Create new Password-Safe")
-    color: UbuntuColors.green
-    //iconName: "go-to"
-    //iconPosition: "left"
-    visible: false
-    anchors {
-      top: openButton.bottom
-      left: parent.left
-      right: parent.right
-      margins: units.gu(2)
-    }
-    onClicked: {
-      myPages.push(createPage)
     }
   }
 }

@@ -6,8 +6,8 @@ MainView {
   applicationName: "password-shroud.rene-so36"
   //automaticOrientation: true
   pageStack: introPage
-  width: units.gu(100)
-  height: units.gu(75)
+  width: units.gu(75)
+  height: units.gu(100)
   //backgroundColor: UbuntuColors.darkAubergine
 
   PageStack {

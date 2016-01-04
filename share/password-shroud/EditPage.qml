@@ -20,8 +20,7 @@ Page {
     Label {
       id: ngLabel
       objectName: "label"
-      //text: i18n.tr("your long mantra")
-      text: ctrl.message
+      text: i18n.tr("provide your mantra...")
     }
     TextField {
       id: passwdField
@@ -32,19 +31,27 @@ Page {
     }
     Button {
       id: passBtn
-      text: i18n.tr("decrypt password-shroud")
+      text: i18n.tr("Decrypt password shroud")
       color: UbuntuColors.green
-      width: parent.width
+      anchors.horizontalCenter: parent.horizontalCenter
       
       onClicked: {
-        //console.info(passwdField.text)
         var ret = ctrl.openshroud(passwdField.text) 
         console.log("items in store: " + ctrl.items.len) 
 
         if (ret == true) {
+          decryptResponse.text = ""
           myPages.push(listPage)
+        } else {
+          decryptResponse.text = i18n.tr("Wrong mantra supplied?")
         }
       }
+    }
+
+    Label {
+      id: decryptResponse
+      color: UbuntuColors.purple
+      text: ""
     }
   }
 }
