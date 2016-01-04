@@ -21,7 +21,7 @@ Page {
   Button {
     id: openButton
     text: i18n.tr("Open stored passwords")
-    strokeColor: UbuntuColors.orange
+    color: UbuntuColors.orange
     anchors {
       centerIn: parent
       margins: units.gu(2)

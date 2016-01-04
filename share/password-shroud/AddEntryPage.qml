@@ -21,7 +21,6 @@ Page {
     }
     TextField {
       id: inputNameField
-      text: "name"
       width: parent.width
     }
 
@@ -44,7 +43,7 @@ Page {
   }
   Button {
     text: i18n.tr("Create new entry")
-    strokeColor: UbuntuColors.orange
+    color: UbuntuColors.orange
     anchors {
       margins: units.gu(2)
       top: formElements.bottom
