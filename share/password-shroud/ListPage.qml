@@ -1,5 +1,5 @@
 import QtQuick 2.4
-import Ubuntu.Components 1.2
+import Ubuntu.Components 1.3
 
 Page {
   id: listPage
@@ -19,11 +19,11 @@ Page {
     delegate: EntryDelegate{}
   }
 
-  //BottomEdgeHint {
-  //  id: edgeHint
-  //  text: i18n.tr("Add Entry") 
-  //  onClicked: {
-  //    myPages.push(addEntryPage)
-  //  }
-  //}
+  BottomEdgeHint {
+    id: edgeHint
+    text: i18n.tr("Add Entry") 
+    onClicked: {
+      myPages.push(addEntryPage)
+    }
+  }
 }
