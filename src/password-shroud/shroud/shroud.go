@@ -53,8 +53,40 @@ func (sh *Shroud) GetEntries() []Entry {
 	return ets
 }
 
+func (sh *Shroud) Delete(name string) bool {
+	ret := sh.passwords.Destroy(name)
+	if ret == true {
+		return true
+	}
+	return false
+}
+
 type passwords struct {
 	Entries []Entry `json:"entries"`
+}
+
+func (p *passwords) Destroy(name string) bool {
+	log.Println("before Destroy:")
+	for _, e := range p.Entries {
+		log.Println("name: ", e.Name)
+	}
+	tmp := p.Entries
+	log.Println("length of entries: ", len(tmp))
+	for ind, val := range p.Entries {
+		log.Println("check for: ", val.Name)
+		if val.Name == name {
+			log.Println("removing index: ", ind)
+			log.Println("by name: ", name)
+			p.Entries = append(p.Entries[:ind], p.Entries[ind+1])
+		} else {
+			log.Println("keep name: ", val.Name)
+		}
+	}
+	log.Println("after Destroy:")
+	for _, e1 := range p.Entries {
+		log.Println("name: ", e1.Name)
+	}
+	return false
 }
 
 // opens up the Shroud
@@ -180,6 +212,8 @@ func (sh *Shroud) openInitialize() bool {
 }
 
 func (sh *Shroud) Marshal() bool {
+	log.Println("in Marshal: ")
+	sh.PrintPlain()
 	jsonblob, err := json.Marshal(sh.passwords)
 	if err != nil {
 		log.Fatal(err)

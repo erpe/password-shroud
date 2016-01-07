@@ -69,6 +69,19 @@ func (i *Items) Get(index int) *Item {
 	return i.itemList[index]
 }
 
+func (ctrl *Control) Delete(index int) {
+	toDelItem := ctrl.Items.itemList[index]
+	ret := ctrl.Shroud.Delete(toDelItem.Name)
+	ctrl.Shroud.Marshal()
+	ctrl.Shroud.Encrypt()
+	ctrl.Shroud.Write()
+	if ret == true {
+		log.Println("success deliting index: ", index)
+	} else {
+		log.Println("could not delete index: ", index)
+	}
+}
+
 func NewItems() *Items {
 	items := Items{itemMap: make(map[string]*Item)}
 	return &items
