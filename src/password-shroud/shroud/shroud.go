@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/satori/go.uuid"
 	"golang.org/x/crypto/openpgp"
 	"io/ioutil"
 	"log"
@@ -53,8 +54,8 @@ func (sh *Shroud) GetEntries() []Entry {
 	return ets
 }
 
-func (sh *Shroud) Delete(name string) bool {
-	ret := sh.passwords.Destroy(name)
+func (sh *Shroud) Delete(uid string) bool {
+	ret := sh.passwords.Destroy(uid)
 	if ret == true {
 		return true
 	}
@@ -65,7 +66,7 @@ type passwords struct {
 	Entries []Entry `json:"entries"`
 }
 
-func (p *passwords) Destroy(name string) bool {
+func (p *passwords) Destroy(uid string) bool {
 	log.Println("before Destroy:")
 	for _, e := range p.Entries {
 		log.Println("name: ", e.Name)
@@ -73,10 +74,9 @@ func (p *passwords) Destroy(name string) bool {
 	tmp := p.Entries
 	log.Println("length of entries: ", len(tmp))
 	for ind, val := range p.Entries {
-		log.Println("check for: ", val.Name)
-		if val.Name == name {
+		log.Println("check for: ", val.Uid)
+		if val.Uid == uid {
 			log.Println("removing index: ", ind)
-			log.Println("by name: ", name)
 			p.Entries = append(p.Entries[:ind], p.Entries[ind+1])
 		} else {
 			log.Println("keep name: ", val.Name)
@@ -129,7 +129,8 @@ func (sh *Shroud) Write() bool {
 }
 
 func (sh *Shroud) AddEntryFromText(name string, url string, pass string) bool {
-	return sh.AddEntry(Entry{name, url, pass, ""})
+	uid := uuid.NewV4()
+	return sh.AddEntry(Entry{name, url, pass, uid.String()})
 }
 
 // adds an Entry entry to shroud

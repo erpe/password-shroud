@@ -11,12 +11,16 @@ Page {
       onTriggered: myPages.push(addEntryPage)
     }
   ]
+  
   UbuntuListView {
     id: entryListView
     width: parent.width
     height: parent.height
-    model: ctrl.items.len
+    model: newListModel
+    //model: ctrl.items.len
     delegate: EntryDelegate{}
+    //delegate: NewDelegate{}
+  
   }
 
   BottomEdgeHint {
@@ -26,4 +30,5 @@ Page {
       myPages.push(addEntryPage)
     }
   }
+
 }

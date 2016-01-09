@@ -8,6 +8,7 @@ Page {
   onActiveChanged: {
     passwdField.text = ""
   }
+  
   Column { 
     spacing: units.gu(2)
     width: parent.width
@@ -41,6 +42,7 @@ Page {
 
         if (ret == true) {
           decryptResponse.text = ""
+          populate()
           myPages.push(listPage)
         } else {
           decryptResponse.text = i18n.tr("Wrong mantra supplied?")
@@ -52,6 +54,18 @@ Page {
       id: decryptResponse
       color: UbuntuColors.purple
       text: ""
+    }
+  }
+
+  function populate() {
+    if (newListModel.count > 0){
+      console.log("counting: " + newListModel.count)
+      newListModel.clear()
+    }
+    console.log("counting: " + newListModel.count)
+    console.log("init model")
+    for (var i = 0; i < ctrl.items.len; i++){
+      newListModel.insert(i,{"name":ctrl.items.get(i).name, "url":ctrl.items.get(i).url})
     }
   }
 }

@@ -44,12 +44,12 @@ ListItem {
     Row {
       spacing: units.gu(2)
       Label {
-        text: ctrl.items.get(index).name
+        text: name
         font.bold: true
         color: UbuntuColors.purple
       }
       Label {
-        text: ctrl.items.get(index).url
+        text: url
       }
     }
   }
@@ -60,6 +60,8 @@ ListItem {
         iconName: "delete"
         onTriggered: {
           console.log("delete triggered for: " + index)
+          ctrl.delete(index)
+          newListModel.remove(index)
         }
       }
     ]

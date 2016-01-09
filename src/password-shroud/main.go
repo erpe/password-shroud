@@ -51,6 +51,7 @@ type Item struct {
 	Name string
 	Url  string
 	Pass string
+	Uid  string
 }
 
 type Items struct {
@@ -67,19 +68,33 @@ func (i *Items) add(item *Item) {
 
 func (i *Items) Get(index int) *Item {
 	return i.itemList[index]
+	//listLength := len(i.itemList)
+	//if index < listLength {
+	//		return i.itemList[index]
+	//} else {
+	//	return &Item{}
+	//}
 }
 
 func (ctrl *Control) Delete(index int) {
 	toDelItem := ctrl.Items.itemList[index]
-	ret := ctrl.Shroud.Delete(toDelItem.Name)
+	ret := ctrl.Shroud.Delete(toDelItem.Uid)
 	ctrl.Shroud.Marshal()
 	ctrl.Shroud.Encrypt()
 	ctrl.Shroud.Write()
 	if ret == true {
-		log.Println("success deliting index: ", index)
+		log.Println("success deleting index: ", index)
 	} else {
 		log.Println("could not delete index: ", index)
 	}
+	o := ctrl.Shroud.Open()
+	if o == true {
+		ctrl.Items = NewItems()
+		for _, val := range ctrl.Shroud.GetEntries() {
+			ctrl.Items.add(&Item{Name: val.Name, Url: val.Url, Pass: val.Password, Uid: val.Uid})
+		}
+	}
+	qml.Changed(ctrl, &ctrl.Items)
 }
 
 func NewItems() *Items {
@@ -96,7 +111,7 @@ func (ctrl *Control) Openshroud(pass string) bool {
 		log.Println("opened shroud:", ctrl.Shroud)
 		ctrl.Items = NewItems()
 		for _, val := range ctrl.Shroud.GetEntries() {
-			ctrl.Items.add(&Item{Name: val.Name, Url: val.Url, Pass: val.Password})
+			ctrl.Items.add(&Item{Name: val.Name, Url: val.Url, Pass: val.Password, Uid: val.Uid})
 		}
 		ctrl.Message = "shroud open..."
 		qml.Changed(ctrl, &ctrl.Message)

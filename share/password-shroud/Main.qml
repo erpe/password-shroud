@@ -10,6 +10,15 @@ MainView {
   height: units.gu(100)
   //backgroundColor: UbuntuColors.darkAubergine
 
+  ListModel {
+    id: newListModel
+    ListElement {
+      name: ""
+      url: ""
+      pass: ""
+    }
+  }
+
   PageStack {
     id: myPages
     Component.onCompleted: myPages.push(introPage)
