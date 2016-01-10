@@ -21,13 +21,12 @@ func main() {
 
 func run() error {
 	items := NewItems()
-	ctrl := Control{Message: "Hello from Go!"}
+	ctrl := Control{Message: "Pasword-Shroud..."}
 	ctrl.Items = items
 
 	engine := qml.NewEngine()
 	context := engine.Context()
 	context.SetVar("ctrl", &ctrl)
-	//context.SetVar("items", items)
 
 	component, err := engine.LoadFile("share/password-shroud/Main.qml")
 	if err != nil {
@@ -68,12 +67,6 @@ func (i *Items) add(item *Item) {
 
 func (i *Items) Get(index int) *Item {
 	return i.itemList[index]
-	//listLength := len(i.itemList)
-	//if index < listLength {
-	//		return i.itemList[index]
-	//} else {
-	//	return &Item{}
-	//}
 }
 
 func (ctrl *Control) Delete(index int) {
@@ -103,12 +96,10 @@ func NewItems() *Items {
 }
 
 func (ctrl *Control) Openshroud(pass string) bool {
-	log.Println("go passphrase: ", pass)
 	ctrl.Shroud = shroud.CurrentShroud()
 	ctrl.Shroud.SetPassphrase(pass)
 	ret := ctrl.Shroud.Open()
 	if ret == true {
-		log.Println("opened shroud:", ctrl.Shroud)
 		ctrl.Items = NewItems()
 		for _, val := range ctrl.Shroud.GetEntries() {
 			ctrl.Items.add(&Item{Name: val.Name, Url: val.Url, Pass: val.Password, Uid: val.Uid})
@@ -120,10 +111,8 @@ func (ctrl *Control) Openshroud(pass string) bool {
 	} else {
 		ctrl.Message = "Wrong passphrase?"
 		qml.Changed(ctrl, &ctrl.Message)
-		log.Println("opening shroud failed:", ctrl.Shroud)
 	}
 	return false
-	//}()
 }
 
 func (ctrl *Control) Addentry(name string, url string, pass string) bool {
@@ -137,6 +126,14 @@ func (ctrl *Control) Addentry(name string, url string, pass string) bool {
 		panic("could not encrypt...")
 	}
 	ret = ctrl.Shroud.Write()
+	o := ctrl.Shroud.Open()
+	if o == true {
+		ctrl.Items = NewItems()
+		for _, val := range ctrl.Shroud.GetEntries() {
+			ctrl.Items.add(&Item{Name: val.Name, Url: val.Url, Pass: val.Password, Uid: val.Uid})
+		}
+	}
+	qml.Changed(ctrl, &ctrl.Items)
 	return true
 }
 

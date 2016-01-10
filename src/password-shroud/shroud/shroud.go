@@ -22,7 +22,7 @@ type Entry struct {
 }
 
 func (e Entry) combine() string {
-	sa := []string{e.Name, e.Url, e.Password}
+	sa := []string{e.Uid, e.Name, e.Url, e.Password}
 	combined := strings.Join(sa, "::")
 	return combined
 }
@@ -55,11 +55,7 @@ func (sh *Shroud) GetEntries() []Entry {
 }
 
 func (sh *Shroud) Delete(uid string) bool {
-	ret := sh.passwords.Destroy(uid)
-	if ret == true {
-		return true
-	}
-	return false
+	return sh.passwords.Destroy(uid)
 }
 
 type passwords struct {
@@ -67,24 +63,12 @@ type passwords struct {
 }
 
 func (p *passwords) Destroy(uid string) bool {
-	log.Println("before Destroy:")
-	for _, e := range p.Entries {
-		log.Println("name: ", e.Name)
-	}
-	tmp := p.Entries
-	log.Println("length of entries: ", len(tmp))
 	for ind, val := range p.Entries {
-		log.Println("check for: ", val.Uid)
 		if val.Uid == uid {
 			log.Println("removing index: ", ind)
-			p.Entries = append(p.Entries[:ind], p.Entries[ind+1])
-		} else {
-			log.Println("keep name: ", val.Name)
+			p.Entries = append(p.Entries[:ind], p.Entries[ind+1:]...)
+			return true
 		}
-	}
-	log.Println("after Destroy:")
-	for _, e1 := range p.Entries {
-		log.Println("name: ", e1.Name)
 	}
 	return false
 }
@@ -94,18 +78,14 @@ func (sh *Shroud) Open() bool {
 	log.Println("going to open shroud....")
 	var ret bool
 	if sh.hasShroudFile() {
-		log.Println("going to open shroud....")
 		ret = sh.openDecrypt()
 	} else {
-		log.Println("going to initialize shroud....")
 		ret = sh.openInitialize()
 	}
-
 	if ret == false {
 		log.Println("open: could not decrypt")
 		return false
 	}
-
 	log.Println("opened...")
 	return true
 }
@@ -137,14 +117,11 @@ func (sh *Shroud) AddEntryFromText(name string, url string, pass string) bool {
 func (sh *Shroud) AddEntry(entry Entry) bool {
 	log.Println("about to add entry...")
 	if sh.plain != nil {
-		//entry.Uid = newUUID()
 		sh.passwords.Entries = append(sh.passwords.Entries, entry)
-		log.Println("passwords: ", sh.passwords.Entries)
+		//log.Println("passwords: ", sh.passwords.Entries)
 		return true
 	} else {
-		log.Println("addEntry: plain is nil")
 		sh.passwords.Entries = append(sh.passwords.Entries, entry)
-		log.Println("passwords: ", sh.passwords.Entries)
 		return true
 	}
 }
@@ -161,9 +138,7 @@ func (sh *Shroud) Clear() {
 // shroud
 func (sh *Shroud) PrintPlain() {
 	t := sh.plain
-
 	fmt.Println("printPlain: ", string(t))
-
 	for _, e := range sh.passwords.Entries {
 		log.Println("name: ", e.Name)
 	}
@@ -176,10 +151,8 @@ func (sh *Shroud) openDecrypt() bool {
 		return false
 	}
 	defer f.Close()
-	log.Println("openDecrypt: going to decrypt... pass: ", sh.passphrase)
 	prompted := false
 	msg, err := openpgp.ReadMessage(f, nil, func(keys []openpgp.Key, symmetric bool) ([]byte, error) {
-		log.Println("in decrypt routine")
 		if prompted == true {
 			return nil, errors.New("wrong passphrase")
 		} else {
@@ -213,15 +186,13 @@ func (sh *Shroud) openInitialize() bool {
 }
 
 func (sh *Shroud) Marshal() bool {
-	log.Println("in Marshal: ")
-	sh.PrintPlain()
+	//sh.PrintPlain()
 	jsonblob, err := json.Marshal(sh.passwords)
 	if err != nil {
 		log.Fatal(err)
 		return false
 	}
 	sh.jsonBlob = jsonblob
-	log.Println("marshaled: ", string(jsonblob))
 	return true
 }
 
@@ -282,7 +253,7 @@ func EnsureShroudExists() (bool, error) {
 		}
 		return true, nil
 	} else {
-		log.Println("found dir/file structure... continue...")
+		log.Println("found app-directory structure... continue...")
 		return true, nil
 	}
 }

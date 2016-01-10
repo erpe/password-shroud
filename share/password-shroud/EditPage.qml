@@ -38,8 +38,6 @@ Page {
       
       onClicked: {
         var ret = ctrl.openshroud(passwdField.text) 
-        console.log("items in store: " + ctrl.items.len) 
-
         if (ret == true) {
           decryptResponse.text = ""
           populate()
@@ -55,14 +53,16 @@ Page {
       color: UbuntuColors.purple
       text: ""
     }
+    Label {
+      color: UbuntuColors.orange
+      text: "This is an alpha version - beware!\nYour initially supplied mantra will be used\n as passphrase to encrypt your data.\n Choose well!"
+    }
   }
 
   function populate() {
     if (newListModel.count > 0){
-      console.log("counting: " + newListModel.count)
       newListModel.clear()
     }
-    console.log("counting: " + newListModel.count)
     console.log("init model")
     for (var i = 0; i < ctrl.items.len; i++){
       newListModel.insert(i,{"name":ctrl.items.get(i).name, "url":ctrl.items.get(i).url})

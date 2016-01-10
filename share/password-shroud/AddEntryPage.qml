@@ -52,8 +52,8 @@ Page {
     onClicked: {
       var ret = ctrl.addentry(inputNameField.text, inputUrlField.text, inputPasswordField.text)
       if (ret == true) {
-        myPages.pop(addEntryPage)
-        myPages.push(listPage)
+        newListModel.append({"name":inputNameField.text, "url":inputUrlField.text})
+        myPages.pop()
       } else {
         console.log("could not add entry ")
         createResponse.text = "could not add entry... its a desaster..."

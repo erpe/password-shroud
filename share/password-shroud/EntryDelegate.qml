@@ -40,7 +40,6 @@ ListItem {
   }
 
   Row {
-    //spacing: units.gu(4)
     Row {
       spacing: units.gu(2)
       Label {
