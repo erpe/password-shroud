@@ -4,11 +4,9 @@ import Ubuntu.Components 1.3
 MainView {
   objectName: "mainView"
   applicationName: "password-shroud.rene-so36"
-  //automaticOrientation: true
   pageStack: introPage
   width: units.gu(75)
   height: units.gu(100)
-  //backgroundColor: UbuntuColors.darkAubergine
 
   ListModel {
     id: newListModel
@@ -28,6 +26,7 @@ MainView {
     ListPage{ id: listPage } 
     CreatePage{ id: createPage }
     AddEntryPage{ id: addEntryPage }
-    
+    ConfigPage{ id: configPage }    
+    PasswordPage{id: passwordPage}
   }
 }

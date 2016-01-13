@@ -7,6 +7,10 @@ Page {
   visible: false
   head.actions: [
     Action {
+      iconName: "settings"
+      onTriggered: myPages.push(configPage)
+    },
+    Action {
       iconName: "add"
       onTriggered: myPages.push(addEntryPage)
     }
@@ -17,10 +21,7 @@ Page {
     width: parent.width
     height: parent.height
     model: newListModel
-    //model: ctrl.items.len
     delegate: EntryDelegate{}
-    //delegate: NewDelegate{}
-  
   }
 
   BottomEdgeHint {
@@ -30,5 +31,4 @@ Page {
       myPages.push(addEntryPage)
     }
   }
-
 }
