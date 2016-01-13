@@ -40,9 +40,9 @@ Page {
           bottomMargin: units.gu(2) 
           topMargin: units.gu(2) 
         }
-        Label {
-          text: i18n.tr("about")
-        }
+        //Label {
+        //  text: i18n.tr("about")
+        //}
 
       }
     }

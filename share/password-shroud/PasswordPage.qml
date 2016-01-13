@@ -6,6 +6,7 @@ Page {
   title: i18n.tr("password change")
   visible: false
   Column {
+    id: inputElements
     spacing: units.gu(2)
     width: parent.width
     anchors {
@@ -29,6 +30,19 @@ Page {
     TextField {
       id: newPasswordField
       width: parent.width
+    }
+  }
+  Button {
+    text: i18n.tr("change password")
+    color: UbuntuColors.orange
+    anchors {
+      margins: units.gu(2)
+      top: inputElements.bottom
+      horizontalCenter: parent.horizontalCenter
+    }
+    onClicked: {
+      console.log("password change clicked")
+      //var ret = ctrl.addentry(inputNameField.text, inputUrlField.text, inputPasswordField.text)
     }
   }
 }
