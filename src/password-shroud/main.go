@@ -137,6 +137,25 @@ func (ctrl *Control) Addentry(name string, url string, pass string) bool {
 	return true
 }
 
+func (ctrl *Control) Updatepassword(oldpass string, newpass string) bool {
+	if ctrl.Shroud.PasswordEquals(oldpass) {
+		log.Println("correct passphrase supplied...")
+		ctrl.Shroud.SetPassphrase(newpass)
+		if ctrl.Shroud.Finalize() {
+			log.Println("finalize success...")
+			return true
+		} else {
+			ctrl.Message = "something weired happened..."
+			log.Println("finalize failed...")
+		}
+	} else {
+		ctrl.Message = "old passphrase was wrong..."
+		log.Println("wrong passphrase supplied...")
+	}
+	qml.Changed(ctrl, &ctrl.Message)
+	return false
+}
+
 //func (ctrl *Control) Getrandom() Item {
 //	return ctrl.Items[1]
 //}

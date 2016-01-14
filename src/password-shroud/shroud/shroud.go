@@ -41,6 +41,14 @@ func (sh *Shroud) SetPassphrase(pass string) {
 	sh.passphrase = pass
 }
 
+func (sh *Shroud) PasswordEquals(pass string) bool {
+	if sh.passphrase == pass {
+		return true
+	} else {
+		return false
+	}
+}
+
 func (sh *Shroud) user() *user.User {
 	user, err := user.Current()
 	if err != nil {
@@ -183,6 +191,17 @@ func (sh *Shroud) openInitialize() bool {
 	sh.passwords = passwords{}
 	sh.initialize = true
 	return true
+}
+
+func (sh *Shroud) Finalize() bool {
+	if sh.Marshal() {
+		if sh.Encrypt() {
+			if sh.Write() {
+				return true
+			}
+		}
+	}
+	return false
 }
 
 func (sh *Shroud) Marshal() bool {

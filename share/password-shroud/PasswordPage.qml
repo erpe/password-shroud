@@ -33,6 +33,7 @@ Page {
     }
   }
   Button {
+    id: submitBtn
     text: i18n.tr("change password")
     color: UbuntuColors.orange
     anchors {
@@ -41,8 +42,21 @@ Page {
       horizontalCenter: parent.horizontalCenter
     }
     onClicked: {
-      console.log("password change clicked")
-      //var ret = ctrl.addentry(inputNameField.text, inputUrlField.text, inputPasswordField.text)
+      var ret = ctrl.updatepassword(oldPasswordField.text, newPasswordField.text) 
+      if (ret == true) {
+        myPages.pop(passwordPage)
+      } else {
+        output.text = ctrl.message
+      }
     }
+  }
+  Label {
+    anchors {
+      margins: units.gu(2)
+      top: submitBtn.bottom 
+    }
+    id: output
+    text: ''
+    color: UbuntuColors.purple
   }
 }
