@@ -7,12 +7,12 @@ Page {
   visible: false
   head.actions: [
     Action {
-      iconName: "settings"
-      onTriggered: myPages.push(configPage)
-    },
-    Action {
       iconName: "add"
       onTriggered: myPages.push(addEntryPage)
+    },
+    Action {
+      iconName: "settings"
+      onTriggered: myPages.push(settingsPage)
     }
   ]
   

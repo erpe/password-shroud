@@ -21,7 +21,7 @@ Page {
     Label {
       id: ngLabel
       objectName: "label"
-      text: i18n.tr("provide your mantra...")
+      text: i18n.tr("provide a masterpassword...")
     }
     TextField {
       id: passwdField
@@ -55,7 +55,7 @@ Page {
     }
     Label {
       color: UbuntuColors.orange
-      text: "This is an alpha version - beware!\nYour initially supplied mantra will be used\n as passphrase to encrypt your data.\n Choose well!"
+      text: "This is an early version!\n"
     }
   }
 

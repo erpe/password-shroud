@@ -22,6 +22,9 @@ Page {
     TextField {
       id: oldPasswordField
       width: parent.width
+      cursorVisible: true
+      echoMode: TextInput.PasswordEchoOnEdit
+      hasClearButton: true
     }
 
     Label {
@@ -30,6 +33,9 @@ Page {
     TextField {
       id: newPasswordField
       width: parent.width
+      cursorVisible: true
+      echoMode: TextInput.PasswordEchoOnEdit
+      hasClearButton: true
     }
   }
   Button {

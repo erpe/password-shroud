@@ -26,7 +26,7 @@ MainView {
     ListPage{ id: listPage } 
     CreatePage{ id: createPage }
     AddEntryPage{ id: addEntryPage }
-    ConfigPage{ id: configPage }    
-    PasswordPage{id: passwordPage}
+    SettingsPage{ id: settingsPage }    
+    PasswordPage{ id: passwordPage }
   }
 }
