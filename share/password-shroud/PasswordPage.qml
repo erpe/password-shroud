@@ -33,7 +33,7 @@ Page {
     TextField {
       id: newPasswordField
       width: parent.width
-      cursorVisible: true
+      //cursorVisible: true
       echoMode: TextInput.PasswordEchoOnEdit
       hasClearButton: true
     }

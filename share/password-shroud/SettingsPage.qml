@@ -51,7 +51,7 @@ Page {
         }
         Label {
           color: UbuntuColors.coolGrey
-          text: "Version 0.2.0"
+          text: "Version 0.2.1"
           fontSize: "small"
         }
       }
