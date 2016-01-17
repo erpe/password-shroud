@@ -3,7 +3,7 @@ import Ubuntu.Components 1.3
 
 Page {
   id: introPage
-  title: i18n.tr("Password-Shroud")
+  title: "Password-Shroud"
   visible: false
   Image {
     id: logo
@@ -20,7 +20,7 @@ Page {
   }
   Button {
     id: openButton
-    text: i18n.tr("Open stored passwords")
+    text: i18n.tr("Open")
     color: UbuntuColors.orange
     anchors {
       centerIn: parent

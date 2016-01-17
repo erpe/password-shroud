@@ -3,7 +3,7 @@ import Ubuntu.Components 1.3
 
 Page {
   id: editPage
-  title: i18n.tr("edit password-shroud")
+  title: i18n.tr("open password-shroud")
   visible: false
   onActiveChanged: {
     passwdField.text = ""
@@ -32,7 +32,7 @@ Page {
     }
     Button {
       id: passBtn
-      text: i18n.tr("Decrypt password shroud")
+      text: i18n.tr("Decrypt password-shroud")
       color: UbuntuColors.green
       anchors.horizontalCenter: parent.horizontalCenter
       
@@ -43,7 +43,7 @@ Page {
           populate()
           myPages.push(listPage)
         } else {
-          decryptResponse.text = i18n.tr("Wrong mantra supplied?")
+          decryptResponse.text = i18n.tr("Wrong password supplied?")
         }
       }
     }
@@ -55,7 +55,7 @@ Page {
     }
     Label {
       color: UbuntuColors.orange
-      text: "This is an early version!\n"
+      text: i18n.tr("This is an early version!")
     }
   }
 
