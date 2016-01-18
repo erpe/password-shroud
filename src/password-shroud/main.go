@@ -73,7 +73,7 @@ func (ctrl *Control) Delete(index int) {
 	toDelItem := ctrl.Items.itemList[index]
 	ret := ctrl.Shroud.Delete(toDelItem.Uid)
 
-	ret = ctrl.shroud.Finalize()
+	ret = ctrl.Shroud.Finalize()
 	if ret != true {
 		panic("could not finalize")
 	}
@@ -117,7 +117,7 @@ func (ctrl *Control) Addentry(name string, url string, pass string) bool {
 	if ret == false {
 		panic("could not add entry...")
 	}
-	ret = ctr.Shroud.Finalize()
+	ret = ctrl.Shroud.Finalize()
 	if ret != true {
 		panic("could not finalize")
 	}
