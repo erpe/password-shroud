@@ -126,7 +126,6 @@ func (sh *Shroud) AddEntry(entry Entry) bool {
 	log.Println("about to add entry...")
 	if sh.plain != nil {
 		sh.passwords.Entries = append(sh.passwords.Entries, entry)
-		//log.Println("passwords: ", sh.passwords.Entries)
 		return true
 	} else {
 		sh.passwords.Entries = append(sh.passwords.Entries, entry)

@@ -72,13 +72,10 @@ func (i *Items) Get(index int) *Item {
 func (ctrl *Control) Delete(index int) {
 	toDelItem := ctrl.Items.itemList[index]
 	ret := ctrl.Shroud.Delete(toDelItem.Uid)
-	ctrl.Shroud.Marshal()
-	ctrl.Shroud.Encrypt()
-	ctrl.Shroud.Write()
-	if ret == true {
-		log.Println("success deleting index: ", index)
-	} else {
-		log.Println("could not delete index: ", index)
+
+	ret = ctrl.shroud.Finalize()
+	if ret != true {
+		panic("could not finalize")
 	}
 	o := ctrl.Shroud.Open()
 	if o == true {
@@ -120,12 +117,10 @@ func (ctrl *Control) Addentry(name string, url string, pass string) bool {
 	if ret == false {
 		panic("could not add entry...")
 	}
-	ctrl.Shroud.Marshal()
-	ret = ctrl.Shroud.Encrypt()
-	if ret == false {
-		panic("could not encrypt...")
+	ret = ctr.Shroud.Finalize()
+	if ret != true {
+		panic("could not finalize")
 	}
-	ret = ctrl.Shroud.Write()
 	o := ctrl.Shroud.Open()
 	if o == true {
 		ctrl.Items = NewItems()
