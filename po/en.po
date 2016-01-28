@@ -1,0 +1,64 @@
+#: ./share/password-shroud/ListPage.qml:5
+msgid "entries"
+msgstr "entries"
+
+#: ./share/password-shroud/ListPage.qml:28
+msgid "Add Entry"
+msgstr "Add Entry"
+
+#: ./share/password-shroud/AddEntryPage.qml:5
+msgid "add new secret"
+msgstr "Add new secret"
+
+#: ./share/password-shroud/AddEntryPage.qml:44
+msgid "Create new entry"
+msgstr "Create new entry"
+
+#: ./share/password-shroud/IntroPage.qml:22
+msgid "Open"
+msgstr "Open"
+
+#: ./share/password-shroud/EditPage.qml:5
+msgid "open password-shroud"
+msgstr "open password-shroud"
+
+#: ./share/password-shroud/EditPage.qml:23
+msgid "provide a masterpassword..."
+msgstr "provide a masterpassword..."
+
+#: ./share/password-shroud/EditPage.qml:34
+msgid "Decrypt password-shroud"
+msgstr "Decrypt password-shroud"
+
+#: ./share/password-shroud/EditPage.qml:45
+msgid "Wrong password supplied?"
+msgstr "Wrong password supplied?"
+
+#: ./share/password-shroud/EditPage.qml:57
+msgid "This is an early version!"
+msgstr "This is an early version!"
+
+#: ./share/password-shroud/PasswordPage.qml:5
+msgid "password change"
+msgstr "password change"
+
+#: ./share/password-shroud/PasswordPage.qml:42
+msgid "change password"
+msgstr "change password"
+
+#: ./share/password-shroud/CreatePage.qml:5
+msgid "create a new password-safe"
+msgstr "create a new password-safe"
+
+#: ./share/password-shroud/CreatePage.qml:13
+msgid "creating a new store..."
+msgstr "creating a new store..."
+
+#: ./share/password-shroud/SettingsPage.qml:5
+msgid "settings"
+msgstr "settings"
+
+#: ./share/password-shroud/SettingsPage.qml:35
+msgid "change your existing masterpassword"
+msgstr "change your existing masterpassword"
+
