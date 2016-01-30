@@ -13,21 +13,21 @@ ListItem {
       
       Button {
         strokeColor: UbuntuColors.orange
-        text: "show"
+        text: i18n.tr("show password")
         onClicked: {
           dialog.text = ctrl.items.get(index).pass
         }
       }
       Button {
         strokeColor: UbuntuColors.green
-        text: "copy to clipboard"
+        text: i18n.tr("copy password to clipboard")
         onClicked: {
           Clipboard.push( ctrl.items.get(index).pass )
         }
       }
       Button {
         color: UbuntuColors.lightGrey
-        text: "cancel"
+        text: i18n.tr("cancel")
         onClicked: PopupUtils.close(dialog)
       }
     }
@@ -70,16 +70,16 @@ ListItem {
       /**
       Action {
         id: editAction
-        iconName: "edit"
+        iconName: i18n.tr("edit")
         onTriggered: {
-          addEntryPage.title = "Edit entry"
+          addEntryPage.title = i18n.tr("Edit entry")
           myPages.push(addEntryPage)
         }
       },
       **/
       Action {
         id: copyClipBoardAction
-        text: "copy"
+        text: i18n.tr("copy")
         description: "copies password to clipboard"
         iconName: "edit-copy"
         onTriggered: {

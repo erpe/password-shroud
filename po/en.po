@@ -46,6 +46,30 @@ msgstr "password change"
 msgid "change password"
 msgstr "change password"
 
+#: ./share/password-shroud/EntryDelegate.qml:15
+msgid "show password"
+msgstr "show password"
+
+#: ./share/password-shroud/EntryDelegate.qml:22
+msgid "copy password to clipboard"
+msgstr "copy password to clipboard"
+
+#: ./share/password-shroud/EntryDelegate.qml:29
+msgid "cancel"
+msgstr "cancel"
+
+#: ./share/password-shroud/EntryDelegate.qml:72
+msgid "edit"
+msgstr "edit"
+
+#: ./share/password-shroud/EntryDelegate.qml:74
+msgid "Edit entry"
+msgstr "Edit entry"
+
+#: ./share/password-shroud/EntryDelegate.qml:81
+msgid "copy"
+msgstr "copy"
+
 #: ./share/password-shroud/CreatePage.qml:5
 msgid "create a new password-safe"
 msgstr "create a new password-safe"
