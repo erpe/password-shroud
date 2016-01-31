@@ -17,7 +17,7 @@ Page {
     }
 
     Label {
-      text: "old mantra"
+      text: i18n.tr("old mantra")
     }
     TextField {
       id: oldPasswordField
@@ -28,7 +28,7 @@ Page {
     }
 
     Label {
-      text: "new mantra"
+      text: i18n.tr("new mantra")
     }
     TextField {
       id: newPasswordField

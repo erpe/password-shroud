@@ -42,6 +42,14 @@ msgstr "Dies ist eine frühe Version"
 msgid "password change"
 msgstr "Passwort Änderung"
 
+#: ./share/password-shroud/PasswordPage.qml:19
+msgid "old mantra"
+msgstr "bisheriges Masterpasswort"
+
+#: ./share/password-shroud/PasswordPage.qml:30
+msgid "new mantra"
+msgstr "neues Masterpasswort"
+
 #: ./share/password-shroud/PasswordPage.qml:42
 msgid "change password"
 msgstr "Passwort ändern"
