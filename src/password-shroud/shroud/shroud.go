@@ -16,13 +16,14 @@ import (
 
 type Entry struct {
 	Name     string `json:"Name"`
+	Login    string `json:"Login"`
 	Url      string `json:"Url"`
 	Password string `json:"Password"`
 	Uid      string `json:"Uid"`
 }
 
 func (e Entry) combine() string {
-	sa := []string{e.Uid, e.Name, e.Url, e.Password}
+	sa := []string{e.Uid, e.Name, e.Login, e.Url, e.Password}
 	combined := strings.Join(sa, "::")
 	return combined
 }
@@ -116,9 +117,9 @@ func (sh *Shroud) Write() bool {
 	return true
 }
 
-func (sh *Shroud) AddEntryFromText(name string, url string, pass string) bool {
+func (sh *Shroud) AddEntryFromText(name string, login string, url string, pass string) bool {
 	uid := uuid.NewV4()
-	return sh.AddEntry(Entry{name, url, pass, uid.String()})
+	return sh.AddEntry(Entry{name, login, url, pass, uid.String()})
 }
 
 // adds an Entry entry to shroud
@@ -250,7 +251,7 @@ func (sh *Shroud) hasShroudFile() bool {
 
 // generates a fake Entry
 func FakeEntry() Entry {
-	e := Entry{"github", "http://github.com", "xxxxx", ""}
+	e := Entry{"github", "alias", "http://github.com", "xxxxx", ""}
 	return e
 }
 

@@ -12,14 +12,22 @@ ListItem {
       text:  "***********"
       
       Button {
-        strokeColor: UbuntuColors.orange
-        text: i18n.tr("show password")
+        color: UbuntuColors.orange
+        text: i18n.tr("show login and password")
         onClicked: {
-          dialog.text = ctrl.items.get(index).pass
+          dialog.text =  "login: " + ctrl.items.get(index).login + "\n" +  "secret: " + ctrl.items.get(index).pass
         }
       }
       Button {
-        strokeColor: UbuntuColors.green
+        color: UbuntuColors.green
+        text: i18n.tr("copy login to clipboard")
+        onClicked: {
+          Clipboard.push( ctrl.items.get(index).login )
+        }
+      }
+
+      Button {
+        color: UbuntuColors.green
         text: i18n.tr("copy password to clipboard")
         onClicked: {
           Clipboard.push( ctrl.items.get(index).pass )

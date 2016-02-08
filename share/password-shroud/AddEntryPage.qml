@@ -25,6 +25,14 @@ Page {
     }
 
     Label {
+      text: "login"
+    }
+    TextField {
+      id: inputLoginField
+      width: parent.width
+    }
+
+    Label {
       text: "url"
     }
     TextField {
@@ -50,9 +58,9 @@ Page {
       horizontalCenter: parent.horizontalCenter
     }
     onClicked: {
-      var ret = ctrl.addentry(inputNameField.text, inputUrlField.text, inputPasswordField.text)
+      var ret = ctrl.addentry(inputNameField.text, inputLoginField.text, inputUrlField.text, inputPasswordField.text)
       if (ret == true) {
-        newListModel.append({"name":inputNameField.text, "url":inputUrlField.text})
+        newListModel.append({"name":inputNameField.text, "login":inputLoginField.text, "url":inputUrlField.text})
         myPages.pop()
       } else {
         console.log("could not add entry ")

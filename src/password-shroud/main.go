@@ -47,10 +47,11 @@ type Control struct {
 }
 
 type Item struct {
-	Name string
-	Url  string
-	Pass string
-	Uid  string
+	Name  string
+	Login string
+	Url   string
+	Pass  string
+	Uid   string
 }
 
 type Items struct {
@@ -81,7 +82,7 @@ func (ctrl *Control) Delete(index int) {
 	if o == true {
 		ctrl.Items = NewItems()
 		for _, val := range ctrl.Shroud.GetEntries() {
-			ctrl.Items.add(&Item{Name: val.Name, Url: val.Url, Pass: val.Password, Uid: val.Uid})
+			ctrl.Items.add(&Item{Name: val.Name, Login: val.Login, Url: val.Url, Pass: val.Password, Uid: val.Uid})
 		}
 	}
 	qml.Changed(ctrl, &ctrl.Items)
@@ -99,7 +100,7 @@ func (ctrl *Control) Openshroud(pass string) bool {
 	if ret == true {
 		ctrl.Items = NewItems()
 		for _, val := range ctrl.Shroud.GetEntries() {
-			ctrl.Items.add(&Item{Name: val.Name, Url: val.Url, Pass: val.Password, Uid: val.Uid})
+			ctrl.Items.add(&Item{Name: val.Name, Login: val.Login, Url: val.Url, Pass: val.Password, Uid: val.Uid})
 		}
 		ctrl.Message = "shroud open..."
 		qml.Changed(ctrl, &ctrl.Message)
@@ -112,8 +113,8 @@ func (ctrl *Control) Openshroud(pass string) bool {
 	return false
 }
 
-func (ctrl *Control) Addentry(name string, url string, pass string) bool {
-	ret := ctrl.Shroud.AddEntryFromText(name, url, pass)
+func (ctrl *Control) Addentry(name string, login string, url string, pass string) bool {
+	ret := ctrl.Shroud.AddEntryFromText(name, login, url, pass)
 	if ret == false {
 		panic("could not add entry...")
 	}
@@ -125,7 +126,7 @@ func (ctrl *Control) Addentry(name string, url string, pass string) bool {
 	if o == true {
 		ctrl.Items = NewItems()
 		for _, val := range ctrl.Shroud.GetEntries() {
-			ctrl.Items.add(&Item{Name: val.Name, Url: val.Url, Pass: val.Password, Uid: val.Uid})
+			ctrl.Items.add(&Item{Name: val.Name, Login: val.Login, Url: val.Url, Pass: val.Password, Uid: val.Uid})
 		}
 	}
 	qml.Changed(ctrl, &ctrl.Items)
