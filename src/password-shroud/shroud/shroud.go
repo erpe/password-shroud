@@ -82,6 +82,26 @@ func (p *passwords) Destroy(uid string) bool {
 	return false
 }
 
+func (p *passwords) UpdateEntry(entry Entry) bool {
+	entries := p.Entries
+	var found bool
+	for _, val := range entries {
+		if val.Uid == entry.Uid {
+			found = true
+			log.Println("found entry to update by uid...")
+			val.Name = entry.Name
+			val.Login = entry.Login
+			val.Url = entry.Url
+			val.Password = entry.Password
+		}
+	}
+	if found == true {
+		p.Entries = entries
+		return true
+	}
+	return false
+}
+
 // opens up the Shroud
 func (sh *Shroud) Open() bool {
 	log.Println("going to open shroud....")
@@ -130,6 +150,17 @@ func (sh *Shroud) AddEntry(entry Entry) bool {
 		return true
 	} else {
 		sh.passwords.Entries = append(sh.passwords.Entries, entry)
+		return true
+	}
+}
+
+func (sh *Shroud) UpdateEntry(uid string, name string, login string, url string, pass string) bool {
+	e := Entry{name, login, url, pass, uid}
+	ret := sh.passwords.UpdateEntry(e)
+	if ret != true {
+		log.Println("update Entry failed...")
+		return false
+	} else {
 		return true
 	}
 }

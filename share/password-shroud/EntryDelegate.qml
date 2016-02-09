@@ -74,17 +74,17 @@ ListItem {
     ]
   }
   trailingActions: ListItemActions {
+
     actions: [
-      /**
       Action {
         id: editAction
         iconName: i18n.tr("edit")
         onTriggered: {
-          addEntryPage.title = i18n.tr("Edit entry")
-          myPages.push(addEntryPage)
+          editEntryPage.listIndex = index
+          editEntryPage.prepareForm()
+          myPages.push( editEntryPage )
         }
       },
-      **/
       Action {
         id: copyClipBoardAction
         text: i18n.tr("copy")
@@ -99,4 +99,5 @@ ListItem {
   onClicked: {
     PopupUtils.open(dialogComp)
   }
+
 }

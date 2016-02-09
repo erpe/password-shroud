@@ -2,6 +2,7 @@ import QtQuick 2.4
 import Ubuntu.Components 1.3
 
 MainView {
+  id: mainView
   objectName: "mainView"
   applicationName: "password-shroud.rene-so36"
   pageStack: introPage
@@ -12,6 +13,7 @@ MainView {
     id: newListModel
     ListElement {
       name: ""
+      login: ""
       url: ""
       pass: ""
     }
@@ -28,5 +30,6 @@ MainView {
     AddEntryPage{ id: addEntryPage }
     SettingsPage{ id: settingsPage }    
     PasswordPage{ id: passwordPage }
+    EditEntryPage{ id: editEntryPage }
   }
 }

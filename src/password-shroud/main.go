@@ -133,6 +133,33 @@ func (ctrl *Control) Addentry(name string, login string, url string, pass string
 	return true
 }
 
+func (ctrl *Control) Testupdate(uid string, name string, login string, url string, pass string) bool {
+	log.Println("update for: " + uid + " - " + name + " - " + login + " - " + url + " - " + pass)
+	return true
+}
+func (ctrl *Control) Updateentry(uid string, name string, login string, url string, pass string) bool {
+	log.Println("before update entry..")
+	log.Println("update for: " + uid + " - " + name + " - " + login + " - " + url + " - " + pass)
+	if ctrl.Shroud.UpdateEntry(uid, name, login, url, pass) {
+		ret := ctrl.Shroud.Finalize()
+		if ret != true {
+			panic("could not finalize")
+		}
+		o := ctrl.Shroud.Open()
+		if o == true {
+			ctrl.Items = NewItems()
+			for _, val := range ctrl.Shroud.GetEntries() {
+				ctrl.Items.add(&Item{Name: val.Name, Login: val.Login, Url: val.Url, Pass: val.Password, Uid: val.Uid})
+			}
+		}
+		qml.Changed(ctrl, &ctrl.Items)
+		return true
+	} else {
+		log.Println("Error updating Entry")
+	}
+	return false
+}
+
 func (ctrl *Control) Updatepassword(oldpass string, newpass string) bool {
 	if ctrl.Shroud.PasswordEquals(oldpass) {
 		log.Println("correct passphrase supplied...")
