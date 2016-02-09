@@ -1,3 +1,27 @@
+#: ./share/password-shroud/EditEntryPage.qml:6
+msgid "Edit entry"
+msgstr "Eintrag bearbeiten"
+
+#: ./share/password-shroud/EditEntryPage.qml:22
+msgid "name"
+msgstr "Name"
+
+#: ./share/password-shroud/EditEntryPage.qml:30
+msgid "login"
+msgstr "Login"
+
+#: ./share/password-shroud/EditEntryPage.qml:38
+msgid "url"
+msgstr "Url"
+
+#: ./share/password-shroud/EditEntryPage.qml:46
+msgid "secret"
+msgstr "Secret"
+
+#: ./share/password-shroud/EditEntryPage.qml:55
+msgid "Update entry"
+msgstr ""
+
 #: ./share/password-shroud/ListPage.qml:5
 msgid "entries"
 msgstr "Einträge"
@@ -7,8 +31,8 @@ msgid "Add Entry"
 msgstr "Neuer Eintrag"
 
 #: ./share/password-shroud/AddEntryPage.qml:5
-msgid "add new secret"
-msgstr "neues Passwort zufügen"
+msgid "Add new secret"
+msgstr "Neuen Eintrag zufügen"
 
 #: ./share/password-shroud/AddEntryPage.qml:44
 msgid "Create new entry"
@@ -55,12 +79,16 @@ msgid "change password"
 msgstr "Passwort ändern"
 
 #: ./share/password-shroud/EntryDelegate.qml:15
-msgid "show password"
-msgstr "Passwort anzeigen"
+msgid "show login and password"
+msgstr "Login und Passwort anzeigen"
 
 #: ./share/password-shroud/EntryDelegate.qml:22
 msgid "copy password to clipboard"
 msgstr "Passwort nach Zwischenablage"
+
+#: ./share/password-shroud/EntryDelegate.qml:29
+msgid "copy login to clipboard"
+msgstr "Login nach Zwischenablage"
 
 #: ./share/password-shroud/EntryDelegate.qml:29
 msgid "cancel"
@@ -69,10 +97,6 @@ msgstr "Abbrechen"
 #: ./share/password-shroud/EntryDelegate.qml:72
 msgid "edit"
 msgstr "Bearbeiten"
-
-#: ./share/password-shroud/EntryDelegate.qml:74
-msgid "Edit entry"
-msgstr "Eintrag bearbeiten"
 
 #: ./share/password-shroud/EntryDelegate.qml:81
 msgid "copy"

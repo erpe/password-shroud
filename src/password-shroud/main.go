@@ -133,10 +133,6 @@ func (ctrl *Control) Addentry(name string, login string, url string, pass string
 	return true
 }
 
-func (ctrl *Control) Testupdate(uid string, name string, login string, url string, pass string) bool {
-	log.Println("update for: " + uid + " - " + name + " - " + login + " - " + url + " - " + pass)
-	return true
-}
 func (ctrl *Control) Updateentry(uid string, name string, login string, url string, pass string) bool {
 	log.Println("before update entry..")
 	log.Println("update for: " + uid + " - " + name + " - " + login + " - " + url + " - " + pass)

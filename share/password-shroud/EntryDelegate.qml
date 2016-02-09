@@ -78,7 +78,7 @@ ListItem {
     actions: [
       Action {
         id: editAction
-        iconName: i18n.tr("edit")
+        iconName: "edit"
         onTriggered: {
           editEntryPage.listIndex = index
           editEntryPage.prepareForm()

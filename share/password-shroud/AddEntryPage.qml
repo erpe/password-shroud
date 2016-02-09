@@ -3,7 +3,7 @@ import Ubuntu.Components 1.3
 
 Page {
   id: addEntryPage
-  title: i18n.tr("add new secret")
+  title: i18n.tr("Add new secret")
   visible: false
   Column {
     id: formElements
@@ -17,7 +17,7 @@ Page {
     }
 
     Label {
-      text: "name"
+      text: i18n.tr("name")
     }
     TextField {
       id: inputNameField
@@ -25,7 +25,7 @@ Page {
     }
 
     Label {
-      text: "login"
+      text: i18n.tr("login")
     }
     TextField {
       id: inputLoginField
@@ -33,7 +33,7 @@ Page {
     }
 
     Label {
-      text: "url"
+      text: i18n.tr("url")
     }
     TextField {
       id: inputUrlField
@@ -41,7 +41,7 @@ Page {
     }
 
     Label {
-      text: "secret"
+      text: i18n.tr("secret")
     }
     TextField {
       id: inputPasswordField

@@ -9,7 +9,7 @@
             "desktop":  "password-shroud.desktop"
         }
     },
-    "version": "0.2.5",
+    "version": "0.3.0",
     "maintainer": "rene <rene@so36.net>",
     "framework" : "ubuntu-sdk-15.04"
 }

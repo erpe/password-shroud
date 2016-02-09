@@ -83,21 +83,15 @@ func (p *passwords) Destroy(uid string) bool {
 }
 
 func (p *passwords) UpdateEntry(entry Entry) bool {
-	entries := p.Entries
-	var found bool
-	for _, val := range entries {
+	for i, val := range p.Entries {
 		if val.Uid == entry.Uid {
-			found = true
 			log.Println("found entry to update by uid...")
-			val.Name = entry.Name
-			val.Login = entry.Login
-			val.Url = entry.Url
-			val.Password = entry.Password
+			p.Entries[i].Name = entry.Name
+			p.Entries[i].Login = entry.Login
+			p.Entries[i].Url = entry.Url
+			p.Entries[i].Password = entry.Password
+			return true
 		}
-	}
-	if found == true {
-		p.Entries = entries
-		return true
 	}
 	return false
 }
